@@ -4,15 +4,87 @@
     <meta charset="UTF-8">
     <title>我的网页</title>
     <style>
-        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f0f2f5; }
-        .card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
-        h1 { color: #007bff; }
+        body { 
+            font-family: Arial, sans-serif; 
+        }
+        .card { 
+            background: white; 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        h1 { 
+            color: #007bff; 
+        }
+        /* 音乐控制按钮样式 */
+        .music-control {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>😇 天使的网页</h1>
+        <h1>😊 天使的网页</h1>
         <p>欢迎来到我的 GitHub 空间！</p>
+        
+        <!-- 背景音乐区域 -->
+        <div class="music-control">
+            <audio id="bgMusic" loop>
+                <!-- 请将音乐文件放在同目录下，并修改文件名 -->
+                <source src="After17.mp3" type="audio/mpeg">
+                您的浏览器不支持 audio 元素。
+            </audio>
+            
+            <button onclick="playMusic()">🎵 播放音乐</button>
+            <button onclick="pauseMusic()">⏸️ 暂停</button>
+            <button onclick="setVolume(0.1)">➕ 音量+</button>
+            <button onclick="setVolume(-0.1)">➖ 音量-</button>
+        </div>
     </div>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        
+        // 播放音乐
+        function playMusic() {
+            music.play().catch(e => {
+                alert('点击页面任意位置后重试');
+            });
+        }
+        
+        // 暂停音乐
+        function pauseMusic() {
+            music.pause();
+        }
+        
+        // 调整音量 (0.0 到 1.0)
+        function setVolume(change) {
+            music.volume = Math.max(0, Math.min(1, music.volume + change));
+        }
+        
+        // 点击页面任意位置开始播放（绕过浏览器自动播放限制）
+        document.addEventListener('click', function() {
+            if (music.paused) {
+                music.play().catch(e => {});
+            }
+        }, { once: true }); // 只执行一次
+    </script>
 </body>
 </html>
