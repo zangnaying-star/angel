@@ -1,110 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>我的网页</title>
-    <style>
-        /* 背景图设置 - 带深色遮罩 */
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0;
-            min-height: 100vh;
-            /* 添加背景图 */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                              url('angel.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: white;  /* 文字改为白色 */
-        }
-        
-        .card { 
-            background: rgba(255, 255, 255, 0.15);  /* 更透明的卡片 */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            margin: 50px auto;
-            backdrop-filter: blur(8px);     /* 更强的毛玻璃效果 */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        h1 { 
-            color: white; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        p {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        /* 音乐控制按钮样式 */
-        .music-control {
-            margin-top: 20px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-        }
-        
-        button {
-            padding: 8px 15px;
-            margin: 5px;
-            background: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        button:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>我的网页</title>
+    <style>
+        /* 背景图设置 - 带深色遮罩 */
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            min-height: 100vh;
+            /* 添加背景图 */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                              url('angel.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;  /* 文字改为白色 */
+        }
+        
+        .card { 
+            background: rgba(255, 255, 255, 0.15);  /* 更透明的卡片 */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            margin: 50px auto;
+            backdrop-filter: blur(8px);     /* 更强的毛玻璃效果 */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        h1 { 
+            color: white; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* 音乐控制按钮样式 */
+        .music-control {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
-    <div class="card">
-        <h1>😇 angel的网页</h1>
-        <p>欢迎来到天堂，希望这里能成为你的港湾！（天堂持续建设中...）</p>
-        
-        <!-- 背景音乐区域 -->
-        <div class="music-control">
-            <audio id="bgMusic" loop>
-                <source src="After17.mp3" type="audio/mpeg">
-                您的浏览器不支持 audio 元素。
-            </audio>
-            
-            <button onclick="playMusic()">🎵 播放音乐</button>
-            <button onclick="pauseMusic()">⏸️ 暂停</button>
-            <button onclick="setVolume(0.1)">➕ 音量+</button>
-            <button onclick="setVolume(-0.1)">➖ 音量-</button>
-        </div>
-    </div>
+    <div class="card">
+        <h1>😇 angel的网页</h1>
+        <p>欢迎来到天堂，希望这里能成为你的港湾！</p>
+        
+        <!-- 背景音乐区域 -->
+        <div class="music-control">
+            <audio id="bgMusic" loop>
+                <source src="After17.mp3" type="audio/mpeg">
+                您的浏览器不支持 audio 元素。
+            </audio>
+            
+            <button onclick="playMusic()">🎵 播放音乐</button>
+            <button onclick="pauseMusic()">⏸️ 暂停</button>
+            <button onclick="setVolume(0.1)">➕ 音量+</button>
+            <button onclick="setVolume(-0.1)">➖ 音量-</button>
+        </div>
+    </div>
 
-    <script>
-        const music = document.getElementById('bgMusic');
-        
-        function playMusic() {
-            music.play().catch(e => {
-                alert('点击页面任意位置后重试');
-            });
-        }
-        
-        function pauseMusic() {
-            music.pause();
-        }
-        
-        function setVolume(change) {
-            music.volume = Math.max(0, Math.min(1, music.volume + change));
-        }
-        
-        document.addEventListener('click', function() {
-            if (music.paused) {
-                music.play().catch(e => {});
-            }
-        }, { once: true });
-    </script>
+    <script>
+        const music = document.getElementById('bgMusic');
+        
+        function playMusic() {
+            music.play().catch(e => {
+                alert('点击页面任意位置后重试');
+            });
+        }
+        
+        function pauseMusic() {
+            music.pause();
+        }
+        
+        function setVolume(change) {
+            music.volume = Math.max(0, Math.min(1, music.volume + change));
+        }
+        
+        document.addEventListener('click', function() {
+            if (music.paused) {
+                music.play().catch(e => {});
+            }
+        }, { once: true });
+    </script>
 </body>
 </html>
